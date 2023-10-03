@@ -8,6 +8,7 @@ const App = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [jobs, setJobs] = useState([]);
+  const [currentItem, setCurrentItem] = useState(0)
 
   const fetchJobs = async() => {
     const response = await fetch(url);
@@ -33,8 +34,11 @@ const App = () => {
 
   return (
     <section className="jobs-center">
-      <BtnContainer jobs={jobs} />
-      <JobInfo jobs={jobs}/>
+      <BtnContainer jobs={jobs}
+       currentItem={currentItem}
+       setCurrentItem={setCurrentItem}
+      />
+      <JobInfo jobs={jobs} currentItem={currentItem}/>
     </section>
   );
 };
